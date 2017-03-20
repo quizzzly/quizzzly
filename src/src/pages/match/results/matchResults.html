@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="match-results">
+    <p class="match-results__text">Your time is:</p>
+    <p class="match-results__time">{{time}}</p>
+    <button ion-button class="match-results__rematch-button button button-positive button-large"
+            (click)="gotoMatchPage()">
+        Rematch
+    </button>
+  </div>
+</ion-content>

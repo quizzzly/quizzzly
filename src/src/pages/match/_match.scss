@@ -1,0 +1,39 @@
+.match__container {
+	display: flex;
+  text-align: center;
+	flex-wrap: wrap;
+  height: 100%;
+
+  .match__container__item {
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    flex-basis: 0;
+
+    background: #e0ddd5;
+    padding: 3px;
+    margin: 5px;
+
+    &.selected {
+      border: 2px solid $match-border-color;
+    }
+
+    .match__container__item__image {
+      height: 150px;
+      overflow: hidden;
+      width: 150px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      .match__container__item__definition {
+        background-color: rgba(256, 256, 256, 0.35);
+      }
+    }
+  }
+}

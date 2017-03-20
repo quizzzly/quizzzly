@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="sample-modal-page">
+  <ion-list radio-group [(ngModel)]="startWith">
+    <ion-list-header>
+      Start with
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Term</ion-label>
+      <ion-radio value="term" (ionSelect)="itemSelected('term')"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Definition</ion-label>
+      <ion-radio value="definition" (ionSelect)="itemSelected('definition')"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Both sides</ion-label>
+      <ion-radio value="bothSides" (ionSelect)="itemSelected('bothSides')"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

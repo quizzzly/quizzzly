@@ -1,0 +1,39 @@
+ion-navbar.test-navigation-bar {
+  button.back-button {
+    display: none;
+  }
+
+  button.test-navigation-bar__back-button {
+    display: inline-block;
+    box-shadow: none;
+  }
+}
+
+.test {
+  padding: 0.3em;
+  .test__item--visible {
+    position: static;
+    left: 0;
+  }
+
+  .test__item--invisible {
+    position: fixed;
+    left: -2000px;
+  }
+
+  .test__toast-message {
+    .test__toast-message--valid {
+      color: color($colors, light);
+      background-color: color($colors, validation-correct);
+    }
+    .test__toast-message--invalid {
+      color: color($colors, light);
+      background-color: color($colors, validation-error);
+    }
+  }
+
+  .test__next-button {
+    position: fixed;
+    bottom: 0;
+  }
+}

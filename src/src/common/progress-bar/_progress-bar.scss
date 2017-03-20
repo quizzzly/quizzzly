@@ -1,0 +1,28 @@
+$height: 0.5em;
+
+.progress-bar {
+  .progress-bar__placeholder {
+    background-color: color($colors, light);
+    height: $height;
+  }
+
+  .progress-bar__progress {
+    background-color: color($colors, primary);
+    height: $height;
+    position: absolute;
+    top: 0;
+    transition: width 1s ease-in-out;
+
+    &.correct {
+      background-color: #28cc7d;
+    }
+
+    &.remaining {
+      background-color: #4257b2;
+    }
+
+    &.incorrect {
+      background-color: #ff725b;
+    }
+  }
+}

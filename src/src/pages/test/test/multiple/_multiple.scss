@@ -1,0 +1,40 @@
+$box-shadow-param: 0px 0px 12px 2px;
+
+.multiple-test {
+  padding-bottom: 3.6rem;
+
+  .multiple-test__item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+  }
+
+  .multiple-test__item {
+    flex-basis: 40%;
+    padding: 5%;
+    margin: 2px;
+    min-height: 7rem;
+    text-align: center;
+    border: 1px solid color($colors, primary);
+  }
+
+  .multiple-test__item span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .multiple-test__item--selected {
+    box-shadow: $box-shadow-param color($colors, primary);
+  }
+
+  .multiple-test__item--invalid {
+    box-shadow: $box-shadow-param color($colors, validation-error);
+  }
+
+  .multiple-test__item--valid {
+    box-shadow: $box-shadow-param color($colors, validation-correct);
+  }
+
+}

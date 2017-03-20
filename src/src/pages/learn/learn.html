@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showOptionsPromt()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="learn" *ngIf="currentCard">
+    <div class="learn__stats">
+      <div class="stats">
+        <progress-bar
+          [completedPercentage]="score.remaining / score.total * 100"
+          purpose="remaining">
+        </progress-bar>
+        {{score.remaining}} Remaining
+      </div>
+      <div class="stats">
+        <progress-bar
+          [completedPercentage]="score.incorrect / score.total * 100"
+          purpose="incorrect">
+        </progress-bar>
+        {{score.incorrect}} Incorrect
+      </div>
+      <div class="stats">
+        <progress-bar
+          [completedPercentage]="score.correct / score.total * 100"
+          purpose="correct">
+        </progress-bar>
+        {{score.correct}} Correct
+      </div>
+    </div>
+
+    <div class="learn__card" *ngIf="isShowingDefinition">
+      <div class="card__dont-know" tappable (click)="skipItem()">
+        Don't know
+      </div>
+      <div class="card__question">
+        <div class="question__text">
+          <span *ngIf="options.showTerm">{{currentCard.term}}</span>
+          <span *ngIf="options.showDefinition">{{currentCard.definition}}</span>
+        </div>
+        <div class="question__image"
+            *ngIf="currentCard.image"
+            cached-background-image
+            [image-src]="currentCard.image.url">
+        </div>
+      </div>
+
+      <div class="input--answer">
+        <input #input__regular (keyup.enter)="checkInput(input__regular.value)">
+        <button ion-button (click)=checkInput(input__regular.value)>Check</button>
+      </div>
+    </div>
+
+    <div class="learn__card card__answer" *ngIf="isShowingCorrectAnswer || isShowingWrongAnswer">
+      <div>
+        <div *ngIf="options.showDefinition">{{currentCard.definition}}</div>
+        <div *ngIf="options.showTerm">{{currentCard.term}}</div>
+      </div>
+      <div class="answer answer--current">
+        <span *ngIf="options.showTerm">{{currentCard.definition}}</span>
+        <span *ngIf="options.showDefinition">{{currentCard.term}}</span>
+      </div>
+      <div class="answer answer--result-label result--correct" *ngIf="isShowingCorrectAnswer">Correct</div>
+      <div class="answer answer--result-label result--incorrect" *ngIf="isShowingWrongAnswer">Incorrect</div>
+      <div>
+        <button ion-button class="goto-next-term--button" (click)=goToNextDefinition()>
+          Tap to continue
+        </button>
+      </div>
+    </div>
+
+    <div class="learn__card card__copy-answer" *ngIf="isShowingCopyAnswer">
+      <div class="card__copy-answer">
+        <div>
+          <div *ngIf="options.showDefinition">{{currentCard.definition}}</div>
+          <div *ngIf="options.showTerm">{{currentCard.term}}</div>
+        </div>
+        <div class="answer answer--current">
+          <span *ngIf="options.showTerm">{{currentCard.definition}}</span>
+          <span *ngIf="options.showDefinition">{{currentCard.term}}</span>
+        </div>
+        <div class="answer answer--result-label result--copy">Copy answer</div>
+      </div>
+      <div class="input--answer">
+        <input #input__dublicate (keyup)="checkDublicateInput(input__dublicate.value)">
+        <button ion-button (click)=checkDublicateInput(input__dublicate.value)>Check</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

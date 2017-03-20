@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons *ngIf="canEditSet" end>
+      <button ion-button icon-left (click)="editSet()">
+        <ion-icon name="create"></ion-icon>
+        Edit
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="set-toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-80 offset-10 class="set-toolbar__title">
+          {{set?.title}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-80 offset-10 class="set-toolbar__creator">
+          {{set?.created_by}} added {{set?.terms?.length}} terms
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-30>
+          <button [disabled]="isLoadingTerms" (tap)="gotoCardsPage()" ion-button icon-left large class="toolbar-navigation-button">
+            <ion-icon name="albums"></ion-icon> Cards
+          </button>
+        </ion-col>
+        <ion-col width-30>
+          <button [disabled]="isLoadingTerms" (tap)="gotoLearnPage()" ion-button icon-left large class="toolbar-navigation-button">
+            <ion-icon name="book"></ion-icon> Learn
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-30>
+          <button [disabled]="isLoadingTerms" (tap)="gotoMatchPage()" ion-button icon-left large class="toolbar-navigation-button">
+            <ion-icon name="apps"></ion-icon> Match
+          </button>
+        </ion-col>
+        <ion-col width-30>
+          <button [disabled]="isLoadingTerms" (tap)="gotoTestPage()" ion-button icon-left large class="toolbar-navigation-button">
+            <ion-icon name="beaker"></ion-icon> Test
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="set-terms">
+
+    <ion-grid class="set-terms__spinner" *ngIf="isLoadingTerms">
+      <ion-row center>
+        <ion-col width-0 offset-50>
+          <ion-spinner name="crescent"></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list>
+      <ion-item class="set-term-list-item" *ngFor="let term of set?.terms">
+        <ion-grid>
+          <ion-row *ngIf="set?.has_images">
+            <ion-col width-25>{{term?.term}}</ion-col>
+            <ion-col width-45>{{term?.definition}}</ion-col>
+            <ion-col width-30 *ngIf="term.image">
+              <img cached-image [image-src]="term.image.url" >
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!set?.has_images">
+            <ion-col width-30>{{term?.term}}</ion-col>
+            <ion-col width-70>{{term?.definition}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <div class="set-term-list-item__none" *ngIf="!(set?.terms?.length > 0) && !isLoadingTerms">
+        No terms yet
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

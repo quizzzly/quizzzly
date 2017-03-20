@@ -1,0 +1,147 @@
+.learn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+
+  .learn__stats {
+    display: flex;
+    justify-content: space-between;
+    min-height: 3em;
+
+    .stats {
+      position: relative;
+    }
+  }
+
+  .learn__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .card__dont-know {
+      color: color($colors, primary);
+      padding-top: 1em;
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: map-get($grid-breakpoints, sm)) {
+      .card__question {
+        flex-direction: column;
+      }
+    }
+
+    .card__question {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      height: calc(100% - 15rem);
+
+      .question__text {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        padding-top: 1em;
+        overflow-y: auto;
+        font-size: 1em;
+
+        > span {
+          margin: auto;
+        }
+      }
+
+      .question__image {
+        flex: 1;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        height: 100%;
+        max-width: 50%;
+        width: 100%;
+      }
+    }
+
+    .card__copy-answer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .goto-next-term--button {
+      width: 100%;
+    }
+
+    .card__answer {
+      .answer {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+      }
+    }
+
+    .answer--current {
+      display: flex;
+      overflow-y: auto;
+
+      > span {
+        margin: auto;
+      }
+    }
+
+    .answer--current,
+    .answer--result-label {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 100%;
+    }
+
+    .question__text,
+    .answer--current {
+      font-size: 3em;
+      overflow-x: auto;
+    }
+
+    .answer--result-label {
+      font-size: 2em;
+
+      &.result--copy {
+        color: darkblue;
+      }
+
+      &.result--correct {
+        color: darkgreen;
+      }
+
+      &.result--incorrect {
+        color: darkred;
+      }
+    }
+
+    .input--answer {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        align-self: center;
+        border: 2px solid color($colors, primary);
+        height: 3.6rem;
+        display: flex;
+        margin: 0 -3px 0 0;
+        padding: 0 8px;
+        width: 100%;
+      }
+
+      button {
+        align-self: center;
+        display: flex;
+        margin: 0;
+      }
+    }
+  }
+}

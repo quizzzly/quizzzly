@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="quizlet-class">
+  <div class="quizlet-class__header">
+    <div class="quizlet-class__name">{{quizletClass?.name}}</div>
+    <div class="quizlet-class__description">{{quizletClass?.description}}</div>
+  </div>
+  <ion-segment [(ngModel)]="selectedSegment" primary>
+    <ion-segment-button value="sets">
+      Sets
+    </ion-segment-button>
+    <ion-segment-button value="members">
+      Members
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="selectedSegment">
+    <div *ngSwitchCase="'sets'" class="quizlet-class__sets">
+      <set-list [sets]="quizletClass.sets"></set-list>
+    </div>
+    <div *ngSwitchCase="'members'" class="quizlet-class__members">
+      <ion-list>
+        <ion-item *ngFor="let member of quizletClass.members">
+          <h2>{{member.username}}</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

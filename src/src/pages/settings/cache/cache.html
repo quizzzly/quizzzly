@@ -1,0 +1,5 @@
+<ion-content padding class="about">
+  <h2 padding>Clean your application cache:</h2>
+  <ion-spinner margin name="crescent" *ngIf="cleaningCache"></ion-spinner>
+  <button margin ion-button (click)="clearCache()" *ngIf="!cleaningCache">Clear cache</button>
+</ion-content>

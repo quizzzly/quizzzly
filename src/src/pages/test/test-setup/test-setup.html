@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Test Mode</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="test-setup">
+  <ion-list class="test-setup__placeholder">
+    <ion-item>
+      <ion-label>Written</ion-label>
+      <ion-toggle [(ngModel)]="testConfiguration.isWritten"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Multiple Choice</ion-label>
+      <ion-toggle [(ngModel)]="testConfiguration.isMultipleChoices"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>True / False</ion-label>
+      <ion-toggle [(ngModel)]="testConfiguration.isTrueFalse"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Questions count</ion-label>
+      <ion-range range-left range-right [(ngModel)]="testConfiguration.questionsCount" min="2" max="{{set?.terms?.length}}" pin="true">
+        <ion-label range-left>2</ion-label>
+        <ion-label range-right>{{set?.terms?.length}}</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label>Instant evaluation</ion-label>
+      <ion-toggle [(ngModel)]="testConfiguration.doInstantEvaluation"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <button ion-button
+          (click)="gotoTest()"
+          class="test-setup__start-button"
+          block
+          [disabled]="disableNext">
+    Start test
+  </button>
+</ion-content>

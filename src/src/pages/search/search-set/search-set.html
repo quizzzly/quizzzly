@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar hideBackButton class="search__navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <set-search
+      [initialSearch]="query"
+      [isOpened]="true"
+      [isSearchSetPage]="true"
+      (searchUpdated)="searchUpdated($event)"
+      (queryUpdated)="queryUpdated($event)">
+    </set-search>
+  </ion-navbar>
+</ion-header>
+
+<ion-content ngClass="sets" padding>
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <set-list [sets]="sets"></set-list>
+  <ion-infinite-scroll (ionInfinite)="loadMoreItems($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<go-to-create-set-button></go-to-create-set-button>

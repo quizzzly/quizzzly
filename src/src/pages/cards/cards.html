@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showOptionsPromt()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="cards">
+    <ion-slides #slider (ionSlideDidChange)="onSwiped()">
+      <ion-slide *ngFor="let currentCard of currentCards">
+        <div class="cards__card">
+          <div *ngIf="showTerm" class="card__term" [class.no-definition]="!showDefinition">
+            <span>{{currentCard.term}}</span>
+          </div>
+          <div *ngIf="showDefinition" class="card__definition">
+            <div class="definition__text" [class.with-image]="!currentCard.image">
+              <span>{{currentCard.definition}}</span>
+            </div>
+            <div
+              *ngIf="currentCard.image"
+              class="card__image"
+              cached-background-image
+              [image-src]="currentCard.image.url"
+            >
+            </div>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <div class="cards__navigation">
+      <div class="cards__prev" tappable (click)="showPrev()" [class.show]="hasPrev">
+        <ion-icon name="arrow-back"></ion-icon>
+      </div>
+      <div class="cards__flip" *ngIf="!showTerm || !showDefinition" tappable (click)="flipCard()">
+        <ion-icon name="ios-repeat"></ion-icon>
+      </div>
+      <div class="cards__next" tappable (click)="showNext()" [class.show]="hasNext">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>

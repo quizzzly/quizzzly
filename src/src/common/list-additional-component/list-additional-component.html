@@ -1,0 +1,10 @@
+<ion-grid *ngIf="showListAdditionalComponent" class="list-additional-component">
+	<ion-row center>
+		<ion-col *ngIf="showSpinner" width-0 offset-50>
+			<ion-spinner name="crescent"></ion-spinner>
+		</ion-col>
+		<ion-col class="empty-message" *ngIf="showEmptyMessage">
+			{{emptyMessage}}
+		</ion-col>
+	</ion-row>
+</ion-grid>

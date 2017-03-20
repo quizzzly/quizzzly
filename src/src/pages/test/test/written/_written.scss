@@ -1,0 +1,27 @@
+$box-shadow-param: 0px 0px 12px 2px;
+
+.written-test {
+    padding-bottom: 3.6rem;
+    position: relative;
+
+    .written-test__answer {
+      margin: 1em;
+    }
+
+    .written-test__correct-answer {
+        margin: 1em;
+        padding: 0.5em;
+        box-shadow: $box-shadow-param color($colors, validation-correct);
+        color: color($colors, validation-correct);
+    }
+
+    .written-test__wrong-answer {
+        box-shadow: $box-shadow-param color($colors, validation-error);
+        color: color($colors, validation-error);
+    }
+
+    .written-test__right-answer {
+        box-shadow: $box-shadow-param color($colors, validation-correct);
+        color: color($colors, validation-correct);
+    }
+}

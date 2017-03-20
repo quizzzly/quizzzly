@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar class="search__navbar">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Latest</ion-title>
+    <set-search></set-search>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="latest">
+  <list-additional-component
+    [showListAdditionalComponent]="showListAdditionalComponent"
+    [showSpinner]="isInitialLoadingInProgress"
+    [showEmptyMessage]="showEmptyListMessage"
+    [emptyMessage]="'You have no news yet'">
+  </list-additional-component>
+
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list ngClass="latest__items" *ngIf="feed !== null">
+    <div *ngFor="let item of feed.items" (click)="onItemClick(item)">
+      <ion-item-divider *ngIf="item.display_timestamp">
+        {{item.display_timestamp}}
+      </ion-item-divider>
+      <ion-item ngClass="latest__items__item" detail-push no-lines [class.first]="item.display_timestamp">
+        <set-list-item
+          [set]="item.item_type === 'set' ? item.item_data : item.item_data.set"
+        ></set-list-item>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreItems($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+<go-to-create-set-button></go-to-create-set-button>

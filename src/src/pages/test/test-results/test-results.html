@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Test Results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="test-results">
+  <div class="test-results__score">{{score}}%</div>
+  <div class="test-results__header">your score</div>
+  <div class="test-results__sub-header">answers below (swipe for more)</div>
+
+  <ion-slides>
+    <ion-slide *ngFor="let testResult of testResults; let i = index;" class="test-results__slide">
+      <ion-card>
+        <ion-card-header [ngClass]="{'test-results__valid': testResult.isValid, 'test-results__invalid': !testResult.isValid}">
+          Question number {{i + 1}}: {{testResult.isValid ? 'Correct' : 'Incorrect'}}
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngIf="testResult.isValid">{{testResult.term.term}}</div>
+          <div class="test-results__definition">{{testResult.term.definition}}</div>
+          <div class="test-results__correct-answer" *ngIf="!testResult.isValid">Correct answer: {{testResult.term.term}}</div>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

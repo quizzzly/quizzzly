@@ -1,0 +1,21 @@
+.quizlet-class {
+    .quizlet-class__header {
+        background-color: color($colors, primary);
+        color: color($colors, light);
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        .quizlet-class__name {
+            font-size: $title-font-size;
+            margin: 0.5 em;
+            text-align: center;
+        }
+
+        .quizlet-class__description {
+            font-size: $sub-title-font-size;
+            margin: 0.5em;
+            text-align: center;
+        }
+    }
+}

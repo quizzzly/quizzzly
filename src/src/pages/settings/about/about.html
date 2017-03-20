@@ -1,0 +1,33 @@
+<ion-content class="about">
+  <h3 padding>Welcome to Quizzzly!</h3>
+  <p margin>
+    Quizzzly provides study tools for students, teachers, and learners of all ages that can be used in and out of the classroom,
+    on your own or with friends.
+  </p>
+
+  <ion-list>
+    <ion-list-header>Useful links</ion-list-header>
+    <ion-item>
+      <a href="https://quizlet.com/tos">Terms of Service</a>
+    </ion-item>
+    <ion-item>
+      <a href="https://quizlet.com/privacy">Privacy Policy</a>
+    </ion-item>
+    <ion-item>
+      <!--https://creativecommons.org/licenses/by-nc/2.0/-->
+      <a href="https://creativecommons.org/licenses/by-nc/2.0/legalcode">
+        License
+      </a>
+    </ion-item>
+    <ion-item *ngIf="versionNumber">
+      Version: {{versionNumber}}
+    </ion-item>
+    <ion-item>
+      <a href="https://quizlet.com/"><img src='https://quizlet.com/static/ThisUsesQuizlet-Blue.png' alt='Powered by Quizlet' /></a>
+    </ion-item>
+  </ion-list>
+
+  <h4 margin>Log out:</h4>
+  <button margin ion-button (click)="showConfirm()">Log out</button>
+
+</ion-content>

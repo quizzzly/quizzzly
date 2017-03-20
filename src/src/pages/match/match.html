@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{roundTime}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showOptionsPromt()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="match">
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="match__container" *ngIf="terms !== null">
+    <div class="match__container__item"
+         *ngFor="let term of terms"
+         tappable
+         (click)="pickItem(term)"
+         [ngClass]="{selected: (term.id === previousTerm.id && term.isTerm === previousTerm.isTerm)}">
+      <div *ngIf="term.isTerm">{{term.term}}</div>
+      <div class="match__container__item__image"
+           *ngIf="!term.isTerm && term.image"
+           cached-background-image
+           [image-src]="term.image.url">
+        <div class="match__container__item__definition"
+             *ngIf="term.definition">
+          {{term.definition}}
+        </div>
+      </div>
+      <div class="match__container__item__definition"
+            *ngIf="!term.isTerm && !term.image">
+        {{term.definition}}
+      </div>
+    </div>
+  </div>
+</ion-content>

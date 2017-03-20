@@ -1,0 +1,47 @@
+.test-results {
+  padding-top: 30px;
+
+  .test-results__score {
+    font-size: 10vh;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .test-results__header {
+    font-size: 3vh;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .test-results__sub-header {
+    font-size: 2vh;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  ion-slides {
+    max-height: 60vh;
+  }
+
+  .test-results__slide {
+    ion-card {
+      min-height: 40vh;
+    }
+
+    .test-results__valid {
+      color: color($colors, validation-correct);
+    }
+
+    .test-results__invalid {
+      color: color($colors, validation-error);
+    }
+
+    .test-results__definition {
+      margin-bottom: 20px;
+    }
+
+    .test-results__correct-answer {
+      color: color($colors, validation-correct);
+    }
+  }
+}

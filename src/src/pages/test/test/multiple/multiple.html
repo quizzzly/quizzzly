@@ -1,0 +1,16 @@
+<div class="multiple-test">
+  <definition-card [definition]="term?.definition" [imageSrc]="term?.image?.url"></definition-card>
+  <div class="multiple-test__item-wrapper">
+    <div  class="multiple-test__item"
+          *ngFor="let item of suggestedTerms"
+          tappable
+          (click)="updateSelectedAnswer(item)"
+          [ngClass]="{
+          'multiple-test__item--selected': selectedAnswer === item,
+          'multiple-test__item--invalid': isValidationShouldBeShown && selectedAnswer === item && !isValid,
+          'multiple-test__item--valid': isValidationShouldBeShown && term?.term === item
+        }">
+      <span>{{item}}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.match-results {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .match-results__text {
+    font-size: $font-size-large;
+  }
+
+  .match-results__time {
+    font-size: $font-size-xlarge;
+    margin-top: 0;
+  }
+}

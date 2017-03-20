@@ -1,0 +1,30 @@
+.login {
+    background-color: color($colors, primary);
+    height: 100%;
+    color: white;
+
+    &__info {
+        height: 100%;
+
+        ion-row {
+            height: 100%;
+        }
+    }
+
+    &__logo {
+        font-size: 4em;
+        text-align: center;
+    }
+
+    &__text {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 0;
+        background-color: color($colors, secondary);
+        font-size: 1.35em;
+    }
+}

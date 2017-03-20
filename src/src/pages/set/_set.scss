@@ -1,0 +1,57 @@
+.set-toolbar {
+    background-color: color($colors, primary);
+
+    ion-row {
+      text-align: center;
+    }
+
+    .toolbar-navigation-button {
+        border: 2px solid color($colors, light);
+        min-width: 90%;
+
+        span {
+          margin: 0 auto;
+          width: 90px;
+        }
+    }
+
+    //Move to more common title style?
+    .set-toolbar__title,
+    .set-toolbar__creator {
+        text-align: center;
+        color: color($colors, light);
+    }
+
+    .set-toolbar__title {
+        font-size: $title-font-size;
+    }
+
+    .set-toolbar__creator {
+        font-size: $sub-title-font-size;
+    }
+}
+
+.set-terms {
+    .set-terms__spinner {
+        //Not so good
+        margin-top: 6em;
+    }
+
+    .set-term-list-item {
+        ion-col {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            color: color($colors, dark);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    }
+
+    .set-term-list-item__none {
+      color: gray;
+      font-size: 1.5em;
+      padding-top: 1em;
+      text-align: center;
+    }
+}

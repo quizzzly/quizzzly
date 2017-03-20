@@ -1,0 +1,28 @@
+.learn-results {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+
+    .learn-results__text {
+      font-size: 2em;
+    }
+
+    .learn-results__score {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      font-size: 3em;
+      justify-content: center;
+    }
+
+    .learn-results__relearn-button {
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+}

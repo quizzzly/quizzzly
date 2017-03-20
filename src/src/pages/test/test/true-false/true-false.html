@@ -1,0 +1,20 @@
+<div class="true-false-test">
+  <definition-card [definition]="term?.definition" [imageSrc]="term?.image?.url"></definition-card>
+  <div class="true-false-test__suggested-term">
+    {{suggestedTerm}}
+  </div>
+  <div class="true-false-test__answer">
+    <button ion-button outline [disabled]="isAnswered" class="true-false-test__button" (click)="updateSelectedAnswer(true)"
+        [ngClass]="{'true-false-test__button--pressed': selectedAnswer === true,
+                    'true-false-test__button--valid': isValidationShouldBeShown && trueIsCorrectAnswer,
+                    'true-false-test__button--invalid': isValidationShouldBeShown && !trueIsCorrectAnswer && !isValid }">
+      True
+    </button>
+      <button ion-button outline [disabled]="isAnswered" class="true-false-test__button" (click)="updateSelectedAnswer(false)"
+        [ngClass]="{'true-false-test__button--pressed': selectedAnswer === false,
+                    'true-false-test__button--valid': isValidationShouldBeShown && !trueIsCorrectAnswer,
+                    'true-false-test__button--invalid': isValidationShouldBeShown && trueIsCorrectAnswer && !isValid}">
+      False
+    </button>
+  </div>
+</div>

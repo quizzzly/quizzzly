@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Classes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <list-additional-component
+    [showListAdditionalComponent]="showListAdditionalComponent"
+    [showSpinner]="isInitialLoadingInProgress"
+    [showEmptyMessage]="showEmptyListMessage"
+    [emptyMessage]="'You have no classes yet'">
+  </list-additional-component>
+
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="classes !== null">
+    <div *ngFor="let class of classes" tappable (click)="onClassClick(class)">
+      <ion-item detail-push>
+        <h2>{{class.name}}</h2>
+        <p>{{class.user_count}} {{class.user_count === 1 ? 'member' : 'members'}} · {{class.set_count}} {{class.set_count === 1 ? 'set' : 'sets'}}</p>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

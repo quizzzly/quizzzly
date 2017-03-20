@@ -1,0 +1,13 @@
+.list-additional-component {
+    height: 100%;
+
+    ion-row {
+        height: 100%;
+    }
+
+    .empty-message {
+      color: gray;
+      font-size: 2em;
+      text-align: center;
+    }
+}

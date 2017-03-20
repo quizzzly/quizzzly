@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="sample-modal-page">
+  <ion-list>
+    <ion-item>
+      <ion-label>Questions count</ion-label>
+      {{termsCount}}
+      <ion-range [(ngModel)]="termsCount" min="2" max="{{maxTerms}}" pin="true">
+        <ion-label range-left>2</ion-label>
+        <ion-label range-right>{{maxTerms}}</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button full (click)="update()">
+      <span>Update</span>
+    </button>
+  </div>
+</ion-content>

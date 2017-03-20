@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons *ngIf="networkAvailable" end>
+      <button ion-button icon-left (click)="saveSet()">
+        <ion-icon name="cloud-upload"></ion-icon>
+        Save
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Term language</ion-label>
+      <ion-select [(ngModel)]="selectedTermLanguage">
+        <ion-option *ngFor="let languageCode of languageCodeValues" [value]="languageCode">{{languageCode}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Definition language</ion-label>
+      <ion-select [(ngModel)]="selectedDefinitionLanguage">
+        <ion-option *ngFor="let languageCode of languageCodeValues" [value]="languageCode">{{languageCode}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Viewable by</ion-label>
+      <ion-select [(ngModel)]="visibility">
+        <ion-option *ngFor="let visibility of allowedVisibilities" [value]="visibility.value">{{visibility.title}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-list>
+        <ion-item *ngFor="let term of terms">
+          <ion-textarea placeholder="Term" [(ngModel)]="term.term"></ion-textarea>
+          <ion-textarea placeholder="Definition" [(ngModel)]="term.definition"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="deleteTerm()">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="addTerm()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

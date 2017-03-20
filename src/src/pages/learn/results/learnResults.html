@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="learn-results">
+    <div class="learn-results__text">Your score is:</div>
+    <div class="learn-results__score">
+      <div class="learn-results__score__correct">
+        Correct: {{score.correct}}
+      </div>
+      <div class="learn-results__score__incorrect">
+        Incorrect: {{score.incorrect}}
+      </div>
+    </div>
+    <div class="learn-results__relearn-button">
+      <button ion-button class="learn-results__relearn-button button button-positive button-large"
+              (click)="gotoLearnPage()">
+          Learn again
+      </button>
+    </div>
+  </div>
+</ion-content>

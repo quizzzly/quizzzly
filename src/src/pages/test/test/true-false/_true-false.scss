@@ -1,0 +1,31 @@
+.true-false-test {
+  padding-bottom: 3.6rem;
+
+  .true-false-test__suggested-term {
+    text-align: center;
+    margin: 1em;
+    font-size: 20px;
+  }
+
+  .true-false-test__answer {
+    text-align: center;
+
+    .true-false-test__button {
+      width: 40%;
+    }
+
+    .true-false-test__button--pressed {
+      border-width: 2px;
+    }
+
+    .true-false-test__button--valid {
+      border-color: color($colors, validation-correct);
+      color: color($colors, validation-correct);
+    }
+
+    .true-false-test__button--invalid {
+      border-color: color($colors, validation-error);
+      color: color($colors, validation-error);
+    }
+  }
+}

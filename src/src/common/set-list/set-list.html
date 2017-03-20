@@ -1,0 +1,17 @@
+<list-additional-component
+    [showListAdditionalComponent]="showListAdditionalComponent"
+    [showSpinner]="isInitialLoadingInProgress"
+    [showEmptyMessage]="showEmptyListMessage"
+    [emptyMessage]="'No sets here... yet'">
+</list-additional-component>
+
+<ion-list ngClass="set__items" *ngIf="sets !== null">
+    <div *ngFor="let set of sets" tappable (click)="onSetClick(set)">
+        <ion-item-divider *ngIf="set.display_timestamp">
+            {{set.display_timestamp}}
+        </ion-item-divider>
+        <ion-item ngClass="set__items__item" detail-push no-lines [class.first]="set.display_timestamp">
+            <set-list-item [set]="set"></set-list-item>
+        </ion-item>
+    </div>
+</ion-list>

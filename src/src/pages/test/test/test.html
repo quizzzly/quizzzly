@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar class="test-navigation-bar">
+    <button ion-button icon-left icon-only class="test-navigation-bar__back-button" (click)="goBack()">
+      <ion-icon class="back-button-icon ion-md-arrow-back" role="img" aria-label="arrow back"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="test">
+  <progress-bar [completedPercentage]="completedPercentage"></progress-bar>
+  <written [ngClass]="{'test__item--visible': currentQuestionType === 'written', 'test__item--invisible': currentQuestionType !== 'written' }" (disableNextButton)="updateNextButtonState($event)"></written>
+  <true-false [ngClass]="{'test__item--visible': currentQuestionType === 'true/false', 'test__item--invisible': currentQuestionType !== 'true/false' }" (disableNextButton)="updateNextButtonState($event)"></true-false>
+  <multiple [ngClass]="{'test__item--visible': currentQuestionType === 'multipleChoises', 'test__item--invisible': currentQuestionType !== 'multipleChoises' }" (disableNextButton)="updateNextButtonState($event)"></multiple>
+  <button ion-button class="test__next-button" block (click)="goNext()" [disabled]="disableNextButton" >Next</button>
+</ion-content>

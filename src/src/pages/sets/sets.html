@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Sets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content ngClass="sets" padding>
+  <ion-refresher (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <set-list
+    [sets]="sets"
+    [isInitialLoadingInProgress]="isInitialLoadingInProgress"
+  >
+  </set-list>
+
+</ion-content>
+<go-to-create-set-button></go-to-create-set-button>

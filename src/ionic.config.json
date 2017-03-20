@@ -1,0 +1,12 @@
+{
+  "name": "quizzzly",
+  "app_id": "",
+  "v2": true,
+  "proxies": [
+    {
+      "path": "/2.0",
+      "proxyUrl": "https://api.quizlet.com/2.0/"
+    }
+  ],
+  "typescript": true
+}

@@ -1,0 +1,16 @@
+<div class="written-test">
+  <definition-card [definition]="term?.definition" [imageSrc]="term?.image?.url"></definition-card>
+  <ion-item class="written-test__answer" [ngClass]="{'written-test__wrong-answer': isValidationShouldBeShown && !isValid,
+                        'written-test__right-answer': isValidationShouldBeShown && isValid }">
+    <ion-label color="primary" stacked>Type the correct answer</ion-label>
+    <ion-input [disabled]="isAnswered" [value]="suggestedTerm" (input)="updateSuggestedTerm($event.target.value)">
+    </ion-input>
+  </ion-item>
+
+  <div class="written-test__correct-answer" *ngIf="isValidationShouldBeShown && !isValid">
+    <div>
+      Correct:
+    </div>
+    {{term?.term}}
+  </div>
+</div>

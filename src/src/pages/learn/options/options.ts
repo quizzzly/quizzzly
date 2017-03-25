@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavParams, ViewController} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ILearnOptions } from '../iLearnOptions';
 
@@ -7,15 +7,16 @@ import { ILearnOptions } from '../iLearnOptions';
   templateUrl: 'options.html'
 })
 export class LearnOptionsPage {
-  private local: Storage;
   private options: ILearnOptions;
   public startWith;
   public initialValue;
 
-  constructor(private viewCtrl: ViewController,
-              private params: NavParams) {
+  constructor(
+    private viewCtrl: ViewController,
+    private params: NavParams,
+    private local: Storage
+  ) {
     this.options = params.get('options');
-    this.local = new Storage();
 
     if (this.options.showTerm) {
       this.startWith = 'term';

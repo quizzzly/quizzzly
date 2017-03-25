@@ -1,7 +1,8 @@
-export const apiBaseUrl = 'https://api.quizlet.com/2.0';
-export const isDebug = false;
+export const apiBaseUrl = '/2.0';
+export const isDebug = true;
 
 export const tempUser = {
-  access_token: '',
-  user_id: ''
+  access_token: 'f9JZf6XR8QPk9NDJEQGjYDKDHEMwVej587aAfrWP',
+  user_id: 'UnkleBob'
 };
+

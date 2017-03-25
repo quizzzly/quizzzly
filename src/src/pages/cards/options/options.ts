@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavParams, ViewController} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ICardsOptions } from '../iCardsOptions';
 
@@ -7,15 +7,16 @@ import { ICardsOptions } from '../iCardsOptions';
   templateUrl: 'options.html'
 })
 export class CardsOptionsPage {
-  private local: Storage;
   private options: ICardsOptions;
   public startWith;
   public initialValue;
 
-  constructor(private viewCtrl: ViewController,
-              private params: NavParams) {
+  constructor(
+    private viewCtrl: ViewController,
+    private params: NavParams,
+    private local: Storage
+  ) {
     this.options = params.get('options');
-    this.local = new Storage();
 
     if (this.options.showTerm) {
       if (this.options.showDefinition) {

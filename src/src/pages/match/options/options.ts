@@ -8,15 +8,16 @@ import { Storage } from '@ionic/storage';
 export class MatchOptionsPage {
   public maxTerms;
   public termsCount;
-  private local: Storage;
   private options;
 
-  constructor(private viewCtrl: ViewController,
-              private params: NavParams) {
+  constructor(
+    private viewCtrl: ViewController,
+    private params: NavParams,
+    private local: Storage
+  ) {
     this.options = params.get('options');
     this.termsCount = this.options.termsCount;
     this.maxTerms = params.get('maxTerms');
-    this.local = new Storage();
   }
 
   update() {

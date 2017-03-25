@@ -28,20 +28,20 @@ export class LearnPage {
   public isShowingWrongAnswer = false;
   public isShowingCopyAnswer = false;
 
-  private local: Storage;
   private options: ILearnOptions = { showTerm: false, showDefinition: true };
 
   constructor(private navCtrl: NavController,
     private navParams: NavParams,
     private modalCtrl: ModalController,
-    private viewCtrl: ViewController) {
+    private viewCtrl: ViewController,
+    private local: Storage
+  ) {
     this.set = navParams.data;
     this.currentTerms = _.shuffle(this.set.terms)
     this.currentCard = this.currentTerms[this.currentCardId];
     this.score.remaining = this.currentTerms.length;
     this.score.total = this.currentTerms.length;
 
-    this.local = new Storage();
     this.local.get('learn-options').then(value => {
       if (value) {
         this.options = JSON.parse(value);

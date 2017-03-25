@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { CommonConfiguration } from '../../config/config.ts';
 import { MainPage } from '../main/main';
 import { AuthenticationService } from '../../providers/authentication-service/authentication-service';
 import { ToastController } from 'ionic-angular';

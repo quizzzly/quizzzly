@@ -15,20 +15,21 @@ export class CardsPage {
   public currentCards = [];
   public hasNext: boolean = true;
   public hasPrev: boolean = false;
-  private local: Storage;
   public showTerm: boolean;
   public showDefinition: boolean;
   private options: ICardsOptions = {showTerm: true, showDefinition: false};
   private set: Set;
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams,
-              private modalCtrl: ModalController) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private modalCtrl: ModalController,
+    private local: Storage
+  ) {
     this.set = navParams.data;
     this.currentCards = _.shuffle(this.set.terms);
     this.hasNext = this.currentCards.length > 1;
 
-    this.local = new Storage();
     this.local.get('cards-options').then(value => {
       if (value) {
         this.options = JSON.parse(value);

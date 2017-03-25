@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Network } from 'ionic-native';
+import { Network } from '@ionic-native/network'
 import { Observable } from 'rxjs';
 import { CommonConfiguration } from '../../config/config'
 
@@ -7,16 +7,18 @@ import { CommonConfiguration } from '../../config/config'
 export class NetworkStatusService {
   public networkStatusChanged: Observable<boolean>;
 
-  constructor() {
-    const disconect = Network.onDisconnect().map(() => false)
-    const connect = Network.onConnect().map(() => true)
+  constructor(
+    network: Network
+  ) {
+    const disconect = network.onDisconnect().map(() => false)
+    const connect = network.onConnect().map(() => true)
 
     const initialStatus = <Observable<boolean>>Observable.create((subscriber) => {
       // assume that for debug we always have intial connection
       const hasNetworkConnection = (
-        Network.type !== 'none' &&
-        Network.type !== 'unknown' &&
-        Network.type !== null
+        network.type !== 'none' &&
+        network.type !== 'unknown' &&
+        network.type !== null
       ) || CommonConfiguration.isDebug
 
       subscriber.next(hasNetworkConnection)

@@ -1,6 +1,7 @@
-import { Injectable, Inject } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Transfer, File } from 'ionic-native'
+import { Injectable, Inject } from '@angular/core'
+import { Observable } from 'rxjs/Observable'
+import { Transfer } from '@ionic-native/transfer'
+import { File, Entry } from '@ionic-native/file'
 import { NetworkStatusService } from '../network-status-service/network-status-service'
 import { CommonConfiguration } from '../../config/config'
 
@@ -9,6 +10,8 @@ export class ImageCacheService {
   private hasConnection: boolean
 
   constructor(
+    private file: File,
+    private transfer: Transfer,
     @Inject(NetworkStatusService) networkStatusService: NetworkStatusService
   ) {
     networkStatusService
@@ -22,7 +25,7 @@ export class ImageCacheService {
     }
 
     const observable = this.hasConnection ?
-      loadFileFromNetwork(src) :
+      loadFileFromNetwork(src, this.transfer) :
       resolveLocalFilesystemUrl(src)
 
     return observable
@@ -32,14 +35,14 @@ export class ImageCacheService {
 
   cleanCachedImages() {
     const checkDirectoryExist = Observable.from(
-      File.checkDir(
+      this.file.checkDir(
         getCordovaFileDirectory(),
         cacheImagesFolder
       )
     )
 
     const removeDirectory = Observable.from(
-      File.removeRecursively(
+      this.file.removeRecursively(
         getCordovaFileDirectory(),
         cacheImagesFolder
       )
@@ -57,7 +60,7 @@ const cacheImagesFolder = 'quizlet-files'
 declare var cordova: any;
 
 const getCordovaFileDirectory = () =>
-  cordova && cordova.file && cordova.file.dataDirectory || ''
+  cordova && cordova.file && cordova.this.file.dataDirectory || ''
 
 const getAppFolderPath = () =>
   getCordovaFileDirectory() +
@@ -75,10 +78,10 @@ const getLocalFileName = src => {
 
 const resolveLocalFilesystemUrl = src =>
   Observable
-    .from(File.resolveLocalFilesystemUrl(getAppFolderPath() + getLocalFileName(src)))
-    .map(entry => entry.toURL())
+    .from(this.file.resolveLocalFilesystemUrl(getAppFolderPath() + getLocalFileName(src)))
+    .map(entry => (<Entry> entry).toURL())
 
-const loadFileFromNetwork = src =>
+const loadFileFromNetwork = (src, transfer) =>
   Observable
-    .from(new Transfer().download(src, getLocalFilePath(src)))
-    .map(entry => entry.toURL())
+    .from(transfer.create().download(src, getLocalFilePath(src)))
+    .map(entry => (<Entry> entry).toURL())

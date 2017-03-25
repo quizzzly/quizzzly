@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, InfiniteScroll } from 'ionic-angular';
-import { CommonConfiguration } from '../../config/config.ts';
 import { FeedService } from '../../providers/feed-service/feed-service';
 import { Set, Feed, FeedEntry, StudySession } from '../../models/models';
 import { SetPage } from '../set/set';

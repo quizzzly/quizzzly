@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { CommonConfiguration } from '../../config/config.ts';
 import localForage from "localforage";
 
 @Injectable()

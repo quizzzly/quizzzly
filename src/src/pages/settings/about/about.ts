@@ -1,4 +1,4 @@
-import { AppVersion } from 'ionic-native';
+import { AppVersion } from '@ionic-native/app-version'
 import { Component } from '@angular/core';
 import { AlertController, App, NavController } from 'ionic-angular';
 import { AuthenticationService } from '../../../providers/authentication-service/authentication-service';
@@ -13,11 +13,12 @@ export class AboutPage {
   constructor(private navCtrl: NavController,
     private app: App,
     private authenticationService: AuthenticationService,
-    private alertCtrl: AlertController) {
-    AppVersion.getVersionNumber().then(versionNumber => {
+    private alertCtrl: AlertController,
+    appVersion: AppVersion
+  ) {
+    appVersion.getVersionNumber().then(versionNumber => {
       this.versionNumber = versionNumber;
-    })
-      .catch(error => console.log(error));
+    }).catch(error => console.log(error));
   }
 
   private logout() {

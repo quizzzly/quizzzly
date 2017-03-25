@@ -15,21 +15,21 @@ export class MatchPage implements OnInit, OnDestroy {
   public roundTime: string = '0.00';
   public terms: Array<any>;
   private items: Array<TermDefinition>;
-  private local: Storage;
   private options = { termsCount: 6 };
   private previousTerm: any = {};
   private set: Set;
   private stopwatch: Stopwatch;
   private timerSubscriber: any;
 
-  constructor(private navCtrl: NavController,
-              private navParams: NavParams,
-              private viewCtrl: ViewController,
-              private modalCtrl: ModalController) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController,
+    private modalCtrl: ModalController,
+    private local: Storage
+  ) {
     this.set = navParams.data;
-
     this.stopwatch = new Stopwatch();
-    this.local = new Storage();
 }
 
   ngOnInit() {

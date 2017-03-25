@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -42,6 +42,15 @@ import { SetSearch } from '../common/set-search/set-search';
 import { ProgressBar } from '../common/progress-bar/progress-bar';
 import { GoToCreateSetButton } from '../common/go-to-create-set-button/go-to-create-set-button';
 
+import { SplashScreen } from '@ionic-native/splash-screen'
+import { StatusBar } from '@ionic-native/status-bar'
+import { AppVersion } from '@ionic-native/app-version'
+import { InAppBrowser } from '@ionic-native/in-app-browser'
+import { SecureStorage } from '@ionic-native/secure-storage'
+import { Transfer } from '@ionic-native/transfer'
+import { File } from '@ionic-native/file'
+import { Network } from '@ionic-native/network'
+
 import { NetworkStatusService } from '../providers/network-status-service/network-status-service'
 import { SerializationService } from '../providers/serialization-service/serialization-service';
 import { CustomHttpService } from '../providers/custom-http-service/custom-http-service';
@@ -53,24 +62,6 @@ import { ClassService } from '../providers/class-service/class-service';
 import { SetService } from '../providers/set-service/set-service';
 import { LanguageService } from '../providers/language-service/language-service';
 import { SearchService } from '../providers/search-service/search-service';
-
-class CustomErrorHandler extends ErrorHandler {
-  constructor() {
-    super(true)
-  }
-
-  handleError(error) {
-    super.handleError(error);
-    try {
-      var devServer = window['IonicDevServer'];
-
-      if (devServer) {
-          devServer.handleError(error);
-      }
-    }
-    catch (e) { }
-  }
-}
 
 @NgModule({
   declarations: [
@@ -125,7 +116,8 @@ class CustomErrorHandler extends ErrorHandler {
       tabsLayout: 'icon-top',
       tabsPlacement: 'top',
       pageTransition: 'windows'
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -167,7 +159,14 @@ class CustomErrorHandler extends ErrorHandler {
     ProgressBar
   ],
   providers: [
-    Storage,
+    Transfer,
+    File,
+    SplashScreen,
+    StatusBar,
+    AppVersion,
+    InAppBrowser,
+    SecureStorage,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NetworkStatusService,
     OfflineHttpService,
